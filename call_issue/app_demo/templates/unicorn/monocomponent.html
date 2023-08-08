@@ -1,0 +1,20 @@
+{% load unicorn %}
+
+
+
+
+<div>
+    <script type="text/javascript">
+
+        function unicornCall(unicornVar) {
+            alert(unicornVar)
+        }
+
+    </script>
+
+    <p>The Count is: {{counter}}</p>
+
+    <button unicorn:click="add">Add +1</button>
+
+    <button unicorn:click="calljs">Call JS</button>
+</div>

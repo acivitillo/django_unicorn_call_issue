@@ -1,0 +1,46 @@
+{% load unicorn %}
+<div>
+    <div class="columns">
+        <div class="column">
+
+            <img src='data:image/png;base64,{{encoded_chart}}' />
+
+            <p>chart clicked {{chart_clicked}}</p>
+            <div id="vis"></div>
+            <script type="text/javascript">
+                console.log("called")
+                function createChart(spec) {
+                    console.log("create chart!")
+                    vegaEmbed("#vis", spec).then(function (result) {
+                    }).catch(console.error);
+                    console.log(spec)
+                }
+            </script>
+        </div>
+    </div>
+
+    <input class="input is-primary" type="text" unicorn:model="search" placeholder="Filter your Signal">
+
+    <table class="table">
+        <thead>
+            <tr>
+                {% for column in table_columns %}
+                <th>{{column}}</th>
+                {% endfor %}
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table_data %}
+            <tr>
+                {% for item in row %}
+                <td>{{ item }}</td>
+                {% endfor %}
+                <td><button class="button is-primary" unicorn:model="chartvisual"
+                        unicorn:click="get_data('{{row.0}}')">{{row.0}}</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>

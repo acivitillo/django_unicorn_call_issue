@@ -1,0 +1,2 @@
+django==4.2.4 
+django_unicorn==0.52.0

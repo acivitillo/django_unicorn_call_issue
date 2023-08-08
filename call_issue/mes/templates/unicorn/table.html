@@ -1,0 +1,28 @@
+{% load unicorn %}
+
+<div>
+
+    {% unicorn "filter" parent=view %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                {% for column in columns %}
+                <th>{{column}}</th>
+                {% endfor %}
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for item in row %}
+                <td>{{ item }}</td>
+                {% endfor %}
+                <td><button class="button is-primary" unicorn:model="chartvisual"
+                        unicorn:click="get_data('{{row.1}}')">{{row.1}}</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

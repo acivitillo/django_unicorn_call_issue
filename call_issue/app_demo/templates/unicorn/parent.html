@@ -1,0 +1,12 @@
+{% load unicorn %}
+
+<div>
+
+
+    <p>The Count is: {{counter}}</p>
+
+    <button unicorn:click="add">Add +1</button>
+
+    {% unicorn 'child' parent=view %}
+
+</div>
